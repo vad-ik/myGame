@@ -62,6 +62,7 @@ public class Player {
         lifeBar = new ProgressBar(0, 100, 1, false, skin);
         touchpad = new Touchpad(10, skin);
         turretButon = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("turetIcon.png"))));
+       turretButon.setSize(Gdx.graphics.getHeight()/7,Gdx.graphics.getHeight()/7);
         tableControl.add(touchpad).fillX().pad(0, Gdx.graphics.getWidth() / 30, 10, Gdx.graphics.getWidth() / 5 * 3);
         tableControl.add(turretButon).fillX().pad(0, 0, 10, Gdx.graphics.getWidth() / 30);
         turretButon.addListener(new ChangeListener() {
