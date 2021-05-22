@@ -65,7 +65,7 @@ public class Screen {
         table2Levl.setPosition(0, -Gdx.graphics.getWidth() / 15 - 120);
         table2Levl.setFillParent(true);
         newGame = new TextButton("New Game", skin);
-        difficult = new TextButton("low", skin);
+        difficult = new TextButton("medium", skin);
         TextButton skins = new TextButton("Skins", skin);
         musicOff = new TextButton("Music off", skin);
         table.add(newGame).fillX();
@@ -90,7 +90,7 @@ public class Screen {
                     dificultNow = 3;
                     UpdateMenu.updateCost = 5;
                 } else if (dificultNow == 3) {
-                    difficult.setText("low");
+                    difficult.setText("medium");
                     dificultNow = 1;
                     spawnController = 10;
                     UpdateMenu.updateCost = 10;

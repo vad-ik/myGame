@@ -6,9 +6,11 @@
                 {
                     "source": "D:\\myGame\\android\\res\\values\\color.xml",
                     "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "55",
+                        "endOffsets": "108"
                     },
                     "to": {
                         "startLines": "2",
@@ -38,9 +40,12 @@
                 {
                     "source": "D:\\myGame\\android\\res\\values\\styles.xml",
                     "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "19",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "484"
                     },
                     "to": {
                         "startLines": "4",

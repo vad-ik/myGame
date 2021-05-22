@@ -1,4 +1,4 @@
-#Sat May 22 16:48:44 MSK 2021
-base.0=D\:\\myGame\\android\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Sat May 22 20:17:28 MSK 2021
+base.0=D\:\\myGame\\android\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
