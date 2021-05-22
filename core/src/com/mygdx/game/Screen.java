@@ -1,7 +1,6 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -16,200 +15,229 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Screen {
-
+    static int dificultNow = 1;
     static int money;
-    static boolean UpDateMenFlag;
+    static boolean updateMenFlag;
     static int score;
     static Stage stage;
-    static boolean StartFlag = true;
+    static boolean startFlag = true;
     static Player player;
-    static int sloznost = 10;
-    static TextButton newgame;
+    static int spawnController = 10;
+    static TextButton newGame;
+    static TextButton difficult;
     static Table table = new Table();
     static Table table2Levl = new Table();
-    static ArrayList<Integer> WragX = new ArrayList<>();
-    static ArrayList<Integer> WragY = new ArrayList<>();
-    static ArrayList<Integer> WragTextureWid = new ArrayList<>();
-    static ArrayList<Integer> WragFlag = new ArrayList<>();
-    static ArrayList<Integer> TuretHP = new ArrayList<>();
+    static ArrayList<Integer> wragX = new ArrayList<>();
+    static ArrayList<Integer> wragY = new ArrayList<>();
+    static ArrayList<Integer> wragTextureWid = new ArrayList<>();
+    static ArrayList<Integer> wragFlag = new ArrayList<>();
+    static ArrayList<Integer> turetHP = new ArrayList<>();
     static int xMir;
     static int yMir;
-    static ArrayList<Integer> WragLive = new ArrayList<>();
-    static ArrayList<Integer> WragStrong = new ArrayList<>();
+    static ArrayList<Integer> wragLive = new ArrayList<>();
+    static ArrayList<Integer> wragStrong = new ArrayList<>();
 
     static UpdateMenu updateMenu;
 
-    static ArrayList<Turet> TuretArray = new ArrayList<>();
+    static ArrayList<Turet> turetArray = new ArrayList<>();
     static Skin skin;
     static Texture backgraund = new Texture("back.jpg");
-    static int TotalMoney;
+    static int totalMoney;
     static boolean skinsFlag = false;
     static boolean skinsFlagws = true;
-    static Skins Skins = new Skins();
+    static Skins skins = new Skins();
     static TextField name;
+    TextButton musicOff;
+    Random random = new Random();
+
     public Screen() {
 
         skin = new Skin(Gdx.files.internal("pixthulhu/skin/pixthulhu-ui.json"));
-        name = new TextField("player",skin );
+        name = new TextField("player", skin);
         player = new Player();
         updateMenu = new UpdateMenu();
         score = 0;
         money = 60;
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
-        table.setPosition(0, -Gdx.graphics.getWidth()/15);
+        table.setPosition(0, -Gdx.graphics.getWidth() / 15);
         table.setFillParent(true);
-        table2Levl.setPosition(0, -Gdx.graphics.getWidth()/15-120);
+        table2Levl.setPosition(0, -Gdx.graphics.getWidth() / 15 - 120);
         table2Levl.setFillParent(true);
-
-       newgame = new TextButton("New Game", skin);
-
-
-        TextButton out = new TextButton("Exit", skin);
-        TextButton multiplayer = new TextButton("multiplayer", skin);
-
+        newGame = new TextButton("New Game", skin);
+        difficult = new TextButton("low", skin);
         TextButton skins = new TextButton("Skins", skin);
-        final TextButton musicOff = new TextButton("Music off", skin);
-
-
-        table.add(newgame).fillX();
-
-        table.add(multiplayer).fillX();
+        musicOff = new TextButton("Music off", skin);
+        table.add(newGame).fillX();
         table.row().pad(10, 0, 10, 0);
         table2Levl.add(musicOff);
-        table2Levl.add(out);
         table2Levl.add(skins);
         table2Levl.add(name).fillY();
+        table2Levl.add(difficult);
         stage.addActor(table);
         stage.addActor(table2Levl);
-
-musicOff.addListener(new ChangeListener() {
-    @Override
-    public void changed(ChangeEvent event, Actor actor) {
-        if (   MyGdxGame.Music.getVolume()!=0){
-        MyGdxGame.Music.setVolume(0);
-        musicOff.setText("Music on");} else{
-            MyGdxGame.Music.setVolume(0.5f);
-            musicOff.setText("Music off");
-        }
-    }
-});
-        out.addListener(new ChangeListener() {
+        difficult.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Gdx.app.exit();
+                if (dificultNow == 1) {
+                    difficult.setText("hard");
+                    dificultNow = 2;
+                    UpdateMenu.updateCost = 20;
+                    spawnController = 50;
+                } else if (dificultNow == 2) {
+                    difficult.setText("easy");
+                    spawnController = 1;
+                    dificultNow = 3;
+                    UpdateMenu.updateCost = 5;
+                } else if (dificultNow == 3) {
+                    difficult.setText("low");
+                    dificultNow = 1;
+                    spawnController = 10;
+                    UpdateMenu.updateCost = 10;
+                }
             }
         });
-        newgame.addListener(new ChangeListener() {
+
+        musicOff.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                if (MyGdxGame.music.getVolume() != 0) {
+                    MyGdxGame.music.setVolume(0);
+                    MyGdxGame.preferences.putBoolean("soundOff", false);
+
+                    musicOff.setText("Music on");
+                } else {
+
+
+                    MyGdxGame.music.setVolume(0.5f);
+
+                    MyGdxGame.preferences.putBoolean("soundOff", true);
+                    musicOff.setText("Music off");
+                }
+            }
+        });
+        newGame.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+
                 stage.clear();
 
-                stage.addActor(player.tableStats);
-               stage.addActor(player.tableControl);
-                stage.addActor( player.tableName);
-                StartFlag = false;
+                stage.addActor(Player.tableStats);
+                stage.addActor(Player.tableControl);
+                stage.addActor(Player.tableName);
+                startFlag = false;
                 MyGdxGame.red = 1f;
                 MyGdxGame.green = 0.5f;
                 MyGdxGame.blue = 0f;
-                player.nameText.setText(name.getText());
+                Player.nameText.setText(name.getText());
             }
         });
         skins.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 skinsFlag = true;
+
             }
         });
     }
 
 
-    static void render(Batch batch, TextureAtlas character, Texture load) {
+    void render(Batch batch, TextureAtlas character, Texture load) {
+
+        MyGdxGame.preferences.putString("name", name.getText());
+
+        MyGdxGame.preferences.putInteger("money", money);
 
         if (skinsFlag) {
-            SkinsChangeMenu(batch);
+            skinsChangeMenu(batch);
         }
-        if (player.life <= 0) {
-           dead();
+        if (Player.life <= 0) {
+            dead();
         }
 
-        if (( StartFlag ) && ( !skinsFlag )) {
-            StartMenu(batch, load);
+        if (( startFlag ) && ( !skinsFlag )) {
+            startMenu(batch, load);
         } else if (( !skinsFlag )) {
-            if (sloznost > 0) {
-                if (( sloznost < 30 ) && ( WragX.size() < 10 )) {
-                    WragGenerate();
-                } else if (( ( sloznost < 100 ) && ( WragX.size() < 50 ) )) {
-                    WragGenerate();
-                    Wrag2Generator();
-                } else if (( ( sloznost < 300 ) )) {
-                    WragGenerate();
-                    Wrag2Generator();
-                    Wrag3Generator();
+            if (spawnController > 0) {
+                if (( spawnController < 30 ) && ( wragX.size() < 10 )) {
+                    wragGenerate();
+                    wrag5Generator();
+                } else if (( ( spawnController < 100 ) && ( wragX.size() < 50 ) )) {
+                    wragGenerate();
+                    wrag2Generator();
+                    wrag6Generator();
+                } else if (( ( spawnController < 300 ) && ( wragX.size() < 400 ) )) {
+                    wragGenerate();
+                    wrag2Generator();
+                    wrag3Generator();
+                    wrag7Generator();
+                } else if (( ( spawnController < 500 ) && ( wragX.size() < 10000 ) )) {
+                    wragGenerate();
+                    wrag2Generator();
+                    wrag3Generator();
+                    wrag4Generator();
                 }
 
             }
-            if (UpDateMenFlag) {
+            if (updateMenFlag) {
                 updateMenu.render();
             } else {
-                Play(batch, character);
+                play(batch, character);
             }
         }
 
 
     }
 
-    private static void dead() {
-        TotalMoney += money;
+    public static void dead() {
+        totalMoney += money;
         stage.clear();
-        StartFlag = true;
-        newgame.setText("you died. start a new game?");
+        startFlag = true;
+        newGame.setText("start a new game?");
         MyGdxGame.blue = 0f;
         MyGdxGame.green = 0f;
         MyGdxGame.red = 0f;
-        player.life = 100;
-        player.x = 380;
-        player.y = 200;
-        sloznost = 10;
-        WragStrong.clear();
-        WragX.clear();
-        WragY.clear();
-        WragFlag.clear();
-        WragTextureWid.clear();
-        WragLive.clear();
-        TuretArray.clear();
+        Player.life = 100;
+        Player.x = Gdx.graphics.getWidth() / 2;
+        Player.y = Gdx.graphics.getHeight() / 2;
+        spawnController = 10;
+        wragStrong.clear();
+        wragX.clear();
+        wragY.clear();
+        wragFlag.clear();
+        wragTextureWid.clear();
+        wragLive.clear();
+        turetArray.clear();
         stage.addActor(table);
         stage.addActor(table2Levl);
-        TuretHP.clear();
+        turetHP.clear();
         xMir = 0;
         yMir = 0;
         money = 60;
-        player.turetColVo = 0;
-        updateMenu= new UpdateMenu();
+        Player.turretColVo = 0;
+        updateMenu = new UpdateMenu();
 
 
-        }
+    }
 
-    static void Play(Batch batch, TextureAtlas character) {
-
-
-
+    void play(Batch batch, TextureAtlas character) {
 
 
         batch.draw(backgraund, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        for (int i = 0; i < WragX.size(); i++) {
 
-            Wrag1.move(batch, WragX.get(i), WragY.get(i), i, WragTextureWid.get(i));
+
+        for (int i = 0; i < wragX.size(); i++) {
+
+            Wrag1.move(batch, wragX.get(i), wragY.get(i), i, wragTextureWid.get(i));
         }
 
-        for (int i = 0; i < TuretArray.size(); i++) {
+        for (int i = 0; i < turetArray.size(); i++) {
 
-            TuretArray.get(i).Drav(batch, i);
+            turetArray.get(i).draw(batch, i);
         }
 
 
-
-        player.Play(batch, character);
+        player.play(batch, character);
         try {
             Thread.sleep(( 100 ));
         } catch (InterruptedException ex) {
@@ -217,18 +245,18 @@ musicOff.addListener(new ChangeListener() {
         }
     }
 
-    static void StartMenu(Batch batch, Texture load) {
-        batch.draw(load, Gdx.graphics.getWidth()/2-Gdx.graphics.getWidth()/15*2, Gdx.graphics.getHeight()/9*5, Gdx.graphics.getWidth()/15*4, Gdx.graphics.getWidth()/15*4);
+    static void startMenu(Batch batch, Texture load) {
+        batch.draw(load, Gdx.graphics.getWidth() / 2 - Gdx.graphics.getWidth() / 18 * 2, Gdx.graphics.getHeight() / 2, Gdx.graphics.getWidth() / 18 * 4, Gdx.graphics.getWidth() / 18 * 4);
         stage.act();
         stage.draw();
 
     }
 
 
-    static void WragGenerate() {
+    void wragGenerate() {
 
-        sloznost -= 1;
-        Random random = new Random();
+        spawnController -= 1;
+
         int position_x = random.nextInt(200);
         int position_y = random.nextInt(200);
         int wragTextur = random.nextInt(8) + 1;
@@ -242,19 +270,19 @@ musicOff.addListener(new ChangeListener() {
         } else {
             position_y = Gdx.graphics.getWidth() + position_y + yMir;
         }
-        WragTextureWid.add(wragTextur);
-        WragFlag.add(1);
-        WragX.add(position_x);
-        WragY.add(position_y);
-        WragLive.add(1);
-        WragStrong.add(1);
+        wragTextureWid.add(wragTextur);
+        wragFlag.add(1);
+        wragX.add(position_x);
+        wragY.add(position_y);
+        wragLive.add(1);
+        wragStrong.add(1);
 
     }
 
-    static void Wrag2Generator() {
+    void wrag2Generator() {
 
-        sloznost -= 10;
-        Random random = new Random();
+        spawnController -= 10;
+
         int position_x = random.nextInt(200);
         int position_y = random.nextInt(200);
         int wragTextur = random.nextInt(2) + 1;
@@ -269,20 +297,20 @@ musicOff.addListener(new ChangeListener() {
             position_y = Gdx.graphics.getWidth() + position_y + yMir;
         }
 
-        WragTextureWid.add(wragTextur);
-        WragFlag.add(1);
-        WragX.add(position_x);
-        WragY.add(position_y);
-        WragLive.add(10);
-        WragStrong.add(2);
+        wragTextureWid.add(wragTextur);
+        wragFlag.add(1);
+        wragX.add(position_x);
+        wragY.add(position_y);
+        wragLive.add(10);
+        wragStrong.add(2);
 
 
     }
 
-    static void Wrag3Generator() {
+    void wrag3Generator() {
 
-        sloznost -= 100;
-        Random random = new Random();
+        spawnController -= 100;
+
         int position_x = random.nextInt(200);
         int position_y = random.nextInt(200);
         int wragTextur = random.nextInt(8) + 1;
@@ -297,25 +325,139 @@ musicOff.addListener(new ChangeListener() {
             position_y = Gdx.graphics.getWidth() + position_y + yMir;
         }
 
-        WragTextureWid.add(wragTextur);
-        WragFlag.add(1);
-        WragX.add(position_x);
-        WragY.add(position_y);
-        WragLive.add(10);
-        WragStrong.add(3);
+        wragTextureWid.add(wragTextur);
+        wragFlag.add(1);
+        wragX.add(position_x);
+        wragY.add(position_y);
+        wragLive.add(10);
+        wragStrong.add(3);
 
 
     }
 
-    static void SkinsChangeMenu(Batch batch) {
+    void wrag4Generator() {
 
-            if (skinsFlagws) {
-                stage.clear();
-                skinsFlagws = false;
-                stage.addActor(Skins.table);
-            }
+        spawnController -= 200;
 
-            Skins.render(batch);
+        int position_x = random.nextInt(200);
+        int position_y = random.nextInt(200);
+        int wragTextur = random.nextInt(4) + 1;
+        if (position_x < 100) {
+            position_x = -80 - position_x + xMir;
+        } else {
+            position_x = Gdx.graphics.getHeight() + position_x + xMir;
+        }
+        if (position_y < 100) {
+            position_y = -60 - position_y + yMir;
+        } else {
+            position_y = Gdx.graphics.getWidth() + position_y + yMir;
+        }
+
+        wragTextureWid.add(wragTextur);
+        wragFlag.add(1);
+        wragX.add(position_x);
+        wragY.add(position_y);
+        wragLive.add(200);
+        wragStrong.add(4);
+
+
+    }
+
+    void wrag5Generator() {
+
+        spawnController -= 2;
+
+        int position_x = random.nextInt(200);
+        int position_y = random.nextInt(200);
+        int wragTextur = random.nextInt(2) + 5;
+        if (position_x < 100) {
+            position_x = -80 - position_x + xMir;
+        } else {
+            position_x = Gdx.graphics.getHeight() + position_x + xMir;
+        }
+        if (position_y < 100) {
+            position_y = -60 - position_y + yMir;
+        } else {
+            position_y = Gdx.graphics.getWidth() + position_y + yMir;
+        }
+
+        wragTextureWid.add(wragTextur);
+        wragFlag.add(1);
+        wragX.add(position_x);
+        wragY.add(position_y);
+        wragLive.add(2);
+        wragStrong.add(5);
+
+
+    }
+
+    void wrag6Generator() {
+
+        spawnController -= 50;
+
+        int position_x = random.nextInt(200);
+        int position_y = random.nextInt(200);
+        int wragTextur = 7;
+        if (position_x < 100) {
+            position_x = -80 - position_x + xMir;
+        } else {
+            position_x = Gdx.graphics.getHeight() + position_x + xMir;
+        }
+        if (position_y < 100) {
+            position_y = -60 - position_y + yMir;
+        } else {
+            position_y = Gdx.graphics.getWidth() + position_y + yMir;
+        }
+
+        wragTextureWid.add(wragTextur);
+        wragFlag.add(1);
+        wragX.add(position_x);
+        wragY.add(position_y);
+        wragLive.add(30);
+        wragStrong.add(6);
+
+
+    }
+
+    void wrag7Generator() {
+
+        spawnController -= 40;
+
+        int position_x = random.nextInt(200);
+        int position_y = random.nextInt(200);
+        int wragTextur = random.nextInt(2) + 8;
+        if (position_x < 100) {
+            position_x = -80 - position_x + xMir;
+        } else {
+            position_x = Gdx.graphics.getHeight() + position_x + xMir;
+        }
+        if (position_y < 100) {
+            position_y = -60 - position_y + yMir;
+        } else {
+            position_y = Gdx.graphics.getWidth() + position_y + yMir;
+        }
+
+        wragTextureWid.add(wragTextur);
+        wragFlag.add(1);
+        wragX.add(position_x);
+        wragY.add(position_y);
+        wragLive.add(20);
+        wragStrong.add(7);
+
+
+    }
+
+    static void skinsChangeMenu(Batch batch) {
+
+        if (skinsFlagws) {
+            stage.clear();
+            skinsFlagws = false;
+            stage.addActor(Skins.table);
+            stage.addActor(Skins.tableManey);
+            stage.addActor(Skins.tablePetButton);
+        }
+
+        skins.render(batch);
 
     }
 

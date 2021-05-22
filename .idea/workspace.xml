@@ -1,22 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cd80bfd-720b-487e-b54b-0339e8496d83" name="Default Changelist" comment="добавлена музыка и привязка к размерам экрана баг с турелью не поправлен">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__myGame_core_core_1_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/preview.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/pixthulhu/preview.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/textfield.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/pixthulhu/raw/textfield.9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/textfield.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/pixthulhu/raw/textfield.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/skin/pixthulhu-ui.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/pixthulhu/skin/pixthulhu-ui.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/character3.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/assets/character3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/ic_launcher-web.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-anydpi-v26/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/build-attribution/androidGradlePluginAttributionData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/TuretAtlas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/TuretAtlas.tps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/TuretAtlas.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/back.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/character.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/character.tps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/character.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/character2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/character2.tps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/character2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/character3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/character3.tps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/character3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/loaddd2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/preview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/preview2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/button-arcade-pressed.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/button-arcade-pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/button-arcade.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/button-arcade.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/button-pressed.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/button-pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/button.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/checkbox-off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/checkbox-on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/eye-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/eye-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/font-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/font-export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/font-subtitle-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/font-subtitle-export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/font-subtitle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/font-title-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/font-title-export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/font-title.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/font.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/list.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/list.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/pixthulhu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-health-knob.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-health.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-health.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-horizontal-knob.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-horizontal.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-horizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-mana-knob.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-mana.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-mana.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-vertical-knob.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-vertical.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/progress-bar-vertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/scrollbar-horizontal-knob.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/scrollbar-horizontal-knob.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/scrollbar-horizontal.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/scrollbar-horizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/scrollbar-vertical-knob.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/scrollbar-vertical-knob.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/scrollbar-vertical.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/scrollbar-vertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/select-box.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/select-box.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/slider-horizontal.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/slider-horizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/slider-knob.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/slider-vertical.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/slider-vertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/split-pane-horizontal.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/split-pane-horizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/split-pane-vertical.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/split-pane-vertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/textfield.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/textfield.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/touchpad-knob.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/touchpad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/window-round.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/window-round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/window.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/raw/window.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/skin/font-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/skin/font-subtitle-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/skin/font-title-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/skin/pixthulhu-ui.atlas" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/skin/pixthulhu-ui.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/pixthulhu/skin/pixthulhu-ui.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/preview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/199x-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/199x-export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/199x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/cat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/cents.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/cents.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/cursor.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/cursor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/cursor2.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/cursor2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/digit-box.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/font-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/font-export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/font.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/giygas-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/giygas-export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/giygas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/label-hp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/label-pp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/label-title.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/pc-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/pc-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/pc-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/pc-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/saturn-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/saturn-export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/saturn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/selector-off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/selector.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/smash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/tile-a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/tile-b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/tile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/window-player.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/window-player.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/window.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/raw/window.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/skin/199x-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/skin/font-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/skin/giygas-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/skin/saturn-export.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/skin/terra-mother-ui.atlas" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/skin/terra-mother-ui.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/terra-mother/skin/terra-mother-ui.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/them.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/wrag1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/wrag1.tps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/wrag1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/wrag2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/wrag2.tps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/wrag2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/wrag3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/wrag3.tps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/wrag3.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/MyGdxGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/MyGdxGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/Skins.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Skins.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/Turet.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Turet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/UpdateMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/UpdateMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/Wrag1.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Wrag1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +244,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/android/assets" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -86,15 +252,48 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\myGame\android\assets" />
       <recent name="D:\myGame\core\assets" />
-      <recent name="D:\myGame" />
+      <recent name="D:\myGame\android\res" />
+      <recent name="D:\myGame\android\res\drawable-anydpi-v26" />
+      <recent name="D:\myGame\android\res\drawable-hdpi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\myGame\android" />
+      <recent name="D:\myGame\android\res\drawable-anydpi-v26" />
       <recent name="D:\myGame\core\assets" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DesktopLauncher">
-    <configuration name="myGame.android" type="AndroidRunConfigurationType" factoryName="Android App">
+  <component name="RunManager" selected="Android App.myGame.android">
+    <configuration name="AndroidLauncher" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+      <module name="myGame.android" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="specific_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java />
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="com.mygdx.game.AndroidLauncher" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="myGame.android" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="myGame.android" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -137,6 +336,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android App.AndroidLauncher" />
         <item itemvalue="Application.DesktopLauncher" />
       </list>
     </recent_temporary>

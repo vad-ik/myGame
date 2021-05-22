@@ -1,342 +1,335 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class Player {
-    static boolean SideW;
-    static boolean SideA;
-    static boolean SideS;
-    static boolean SideD;
+    static boolean sideW;
+    static boolean sideA;
+    static boolean sideS;
+    static boolean sideD;
 
     static int life;
-    static int Falg = 1;
-    static boolean LastSideW;
-    static boolean LastSideA;
-    static boolean LastSideS;
-    static boolean LastSideD;
-    static int turetColVo;
+    static int positionDrawable = 1;
+    static boolean lastSideW;
+    static boolean lastSideA;
+    static boolean lastSideS;
+    static boolean lastSideD;
+    static int turretColVo;
     static public int x;
     static public int y;
-    static int TuretLimit;
+    static int turretLimit;
     static ProgressBar lifeBar;
-    static TextField socerText;
+    static TextField scoredText;
     static TextField nameText;
     static TextField moneyText;
-    static TextField turetLImitText;
+    static TextField turretLimitText;
     static Table tableStats = new Table();
     static Table tableName = new Table();
     static Table tableControl = new Table();
     static Skin skin;
-    static Skin skinText;
-    static String socerForInt;
+    public static Skin skinText;
+    static String scoredForInt;
     static String moneyForInt;
-    TextButton Update;
-    static ImageButton turetButon;
+    TextButton update;
+    static ImageButton turretButon;
     static Touchpad touchpad;
+    static int speed;
+    double xThis;
+    double yThis;
+    static Sprite sprite;
+    static String turretLimitTextString;
 
     public Player() {
+        speed = Gdx.graphics.getHeight() / 100;
 
-        tableStats.setPosition(-Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/80*15);
+        tableStats.setPosition(-Gdx.graphics.getWidth() / 2 + 150, Gdx.graphics.getHeight() / 2 - 150);
         tableStats.setFillParent(true);
         tableName.setPosition(0, 0);
         tableName.setFillParent(true);
-        tableControl.setPosition(0, -Gdx.graphics.getHeight()/3);
+        tableControl.setPosition(0, -Gdx.graphics.getHeight() / 3);
         tableControl.setFillParent(true);
         skin = new Skin(Gdx.files.internal("pixthulhu/skin/pixthulhu-ui.json"));
         skinText = new Skin(Gdx.files.internal("terra-mother/skin/terra-mother-ui.json"));
         lifeBar = new ProgressBar(0, 100, 1, false, skin);
-
-        touchpad = new Touchpad(6, skin);
-        turetButon = new ImageButton(skin);
-
-
-        tableControl.add(touchpad).fillX().pad(0, 0, 0, Gdx.graphics.getWidth()/8*5);
-        tableControl.add(turetButon).fillX();
-
-
-        turetButon.addListener(new ChangeListener() {
+        touchpad = new Touchpad(10, skin);
+        turretButon = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("turetIcon.png"))));
+        tableControl.add(touchpad).fillX().pad(0, Gdx.graphics.getWidth() / 30, 10, Gdx.graphics.getWidth() / 5 * 3);
+        tableControl.add(turretButon).fillX().pad(0, 0, 10, Gdx.graphics.getWidth() / 30);
+        turretButon.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                if (( Screen.money > 0 ) && ( turetColVo < TuretLimit )) {
-                    Screen.TuretArray.add(new Turet(x + Screen.xMir, y + Screen.yMir));
+                if (( Screen.money > 0 ) && ( turretColVo < turretLimit )) {
+                    Screen.turetArray.add(new Turet(x + Screen.xMir, y + Screen.yMir));
                     Screen.money--;
-                    turetColVo++;
+                    turretColVo++;
                 }
 
             }
         });
 
-        socerForInt = ( "socer: " + Screen.score );
+        scoredForInt = ( "socer: " + Screen.score );
         moneyForInt = ( "money: " + Screen.money );
-
-        Update = new TextButton("Update", skin);
-        socerText = new TextField(socerForInt, skinText);
+        update = new TextButton("Update", skin);
+        scoredText = new TextField(scoredForInt, skinText);
         moneyText = new TextField(moneyForInt, skinText);
-        nameText = new TextField(Screen.name.getText(),skinText);
-        String turetlimText = ( "Turret " + turetColVo + "/" + TuretLimit );
-        turetLImitText = new TextField(turetlimText, skinText);
+        nameText = new TextField(Screen.name.getText(), skinText);
+        turretLimitTextString = ( "Turret " + turretColVo + "/" + turretLimit );
+        Player.turretLimitText = new TextField(turretLimitTextString, skinText);
         tableName.add(nameText).fillX();
-        tableStats.add(Update).fillX();
+        tableStats.add(update).fillX();
         tableStats.row().pad(0, 0, 10, 0);
         tableStats.add(lifeBar).fillX();
         tableStats.row().pad(0, 0, 10, 0);
-        tableStats.add(socerText).fillX();
+        tableStats.add(scoredText).fillX();
         tableStats.row().pad(0, 0, 10, 0);
         tableStats.add(moneyText).fillX();
         tableStats.row().pad(0, 0, 10, 0);
-        tableStats.add(turetLImitText).fillX();
+        tableStats.add(Player.turretLimitText).fillX();
         tableStats.row().pad(0, 0, 10, 0);
 
-        Update.addListener(new ChangeListener() {
+        update.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
 
 
                 Screen.stage.clear();
-                Screen.stage.addActor(Screen.updateMenu.table);
+                Screen.stage.addActor(UpdateMenu.table);
 
-                Screen.UpDateMenFlag = true;
+                Screen.updateMenFlag = true;
+                UpdateMenu.update();
             }
         });
 
-        turetColVo = 0;
-        TuretLimit = 10;
+        turretColVo = 0;
+        turretLimit = 10;
         life = 100;
         lifeBar.setValue(100);
-        x = Gdx.graphics.getWidth()/2;
-        y = Gdx.graphics.getHeight()/2;
-        LastSideW = false;
-        LastSideA = false;
-        LastSideS = true;
-        LastSideD = false;
+        x = Gdx.graphics.getWidth() / 2;
+        y = Gdx.graphics.getHeight() / 2;
+        lastSideW = false;
+        lastSideA = false;
+        lastSideS = true;
+        lastSideD = false;
 
     }
 
-    public static void Play(Batch batch, TextureAtlas character) {
-        PlayerController();
-
-
-
-
-
+    public void play(Batch batch, TextureAtlas character) {
+        playerController();
         changeStats(life);
         Screen.stage.act();
         Screen.stage.draw();
-        Move(batch, character);
-
-
+        move(batch, character);
     }
 
-    private static void PlayerController() {
+    private void playerController() {
 
-        double Xthis = ( ( touchpad.getKnobX() - touchpad.getKnobY() ) / Math.sqrt(2) );
-        double Ythis = ( ( touchpad.getKnobX() + touchpad.getKnobY() - 162 ) / Math.sqrt(2) );
-        if (( Xthis == 0 ) && ( Ythis == 0 )) {
-            SideA = false;
-            SideS = false;
-            SideD = false;
-            SideW = false;
-        } else if (( Xthis > 0 ) && ( Ythis > 0 )) {
-            SideA = false;
-            SideS = false;
-            SideD = true;
-            SideW = false;
-        } else if (( Xthis > 0 ) && ( Ythis < 0 )) {
-            SideA = false;
-            SideS = true;
-            SideD = false;
-            SideW = false;
-        } else if (( Xthis < 0 ) && ( Ythis < 0 )) {
-            SideA = true;
-            SideS = false;
-            SideD = false;
-            SideW = false;
-        } else if (( Xthis < 0 ) && ( Ythis > 0 )) {
-            SideA = false;
-            SideS = false;
-            SideD = false;
-            SideW = true;
+        xThis = ( ( touchpad.getKnobX() - touchpad.getKnobY() ) / Math.sqrt(2) );
+        yThis = ( ( touchpad.getKnobX() + touchpad.getKnobY() - 162 ) / Math.sqrt(2) );
+        if (( xThis == 0 ) && ( yThis == 0 )) {
+            sideA = false;
+            sideS = false;
+            sideD = false;
+            sideW = false;
+        } else if (( xThis > 0 ) && ( yThis > 0 )) {
+            sideA = false;
+            sideS = false;
+            sideD = true;
+            sideW = false;
+        } else if (( xThis > 0 ) && ( yThis < 0 )) {
+            sideA = false;
+            sideS = true;
+            sideD = false;
+            sideW = false;
+        } else if (( xThis < 0 ) && ( yThis < 0 )) {
+            sideA = true;
+            sideS = false;
+            sideD = false;
+            sideW = false;
+        } else if (( xThis < 0 ) && ( yThis > 0 )) {
+            sideA = false;
+            sideS = false;
+            sideD = false;
+            sideW = true;
         }
 
     }
 
-    static void Move(Batch batch, TextureAtlas character) {
-
-
-
-
-
-        if (SideW) {
-            LastSideW = true;
-            LastSideA = false;
-            LastSideS = false;
-            LastSideD = false;
-            if (y < Gdx.graphics.getHeight()-MyGdxGame.Playerheight) {
-                y = y + 10;
+    static void move(Batch batch, TextureAtlas character) {
+        if (sideW) {
+            lastSideW = true;
+            lastSideA = false;
+            lastSideS = false;
+            lastSideD = false;
+            if (y < Gdx.graphics.getHeight() - MyGdxGame.playerHeight) {
+                y = y + speed;
             } else {
-                Screen.yMir += 10;
+                Screen.yMir += speed;
 
             }
-            if (Falg == 1) {
+            if (positionDrawable == 1) {
 
                 drawSprite(batch, character, "wa");
-                Falg = 2;
-            } else if (Falg == 2) {
+                positionDrawable = 2;
+            } else if (positionDrawable == 2) {
 
                 drawSprite(batch, character, "w");
 
-                Falg = 3;
-            } else if (Falg == 3) {
+                positionDrawable = 3;
+            } else if (positionDrawable == 3) {
 
 
                 drawSprite(batch, character, "wd");
-                Falg = 4;
-            } else if (Falg == 4) {
+                positionDrawable = 4;
+            } else if (positionDrawable == 4) {
 
                 drawSprite(batch, character, "w");
 
-                Falg = 1;
+                positionDrawable = 1;
             }
 
 
-        } else if (SideA) {
-            LastSideW = false;
-            LastSideA = true;
-            LastSideS = false;
-            LastSideD = false;
+        } else if (sideA) {
+            lastSideW = false;
+            lastSideA = true;
+            lastSideS = false;
+            lastSideD = false;
             if (x > 0) {
-                x = x - 10;
+                x = x - speed;
             } else {
-                Screen.xMir -= 10;
+                Screen.xMir -= speed;
             }
-            if (Falg == 1) {
+            if (positionDrawable == 1) {
 
                 drawSprite(batch, character, "aa");
-                Falg = 2;
-            } else if (Falg == 2) {
+                positionDrawable = 2;
+            } else if (positionDrawable == 2) {
 
                 drawSprite(batch, character, "a");
 
-                Falg = 3;
-            } else if (Falg == 3) {
+                positionDrawable = 3;
+            } else if (positionDrawable == 3) {
 
 
                 drawSprite(batch, character, "ad");
-                Falg = 4;
-            } else if (Falg == 4) {
+                positionDrawable = 4;
+            } else if (positionDrawable == 4) {
 
                 drawSprite(batch, character, "a");
 
-                Falg = 1;
+                positionDrawable = 1;
             }
 
-
-        } else if (SideS) {
-            LastSideW = false;
-            LastSideA = false;
-            LastSideS = true;
-            LastSideD = false;
+        } else if (sideS) {
+            lastSideW = false;
+            lastSideA = false;
+            lastSideS = true;
+            lastSideD = false;
             if (y > 0) {
-                y = y - 10;
+                y = y - speed;
             } else {
 
-                Screen.yMir -= 10;
+                Screen.yMir -= speed;
             }
-            if (Falg == 1) {
+            if (positionDrawable == 1) {
 
                 drawSprite(batch, character, "sa");
-                Falg = 2;
-            } else if (Falg == 2) {
+                positionDrawable = 2;
+            } else if (positionDrawable == 2) {
 
                 drawSprite(batch, character, "s");
 
-                Falg = 3;
-            } else if (Falg == 3) {
+                positionDrawable = 3;
+            } else if (positionDrawable == 3) {
 
 
                 drawSprite(batch, character, "sd");
-                Falg = 4;
-            } else if (Falg == 4) {
+                positionDrawable = 4;
+            } else if (positionDrawable == 4) {
 
                 drawSprite(batch, character, "s");
 
-                Falg = 1;
+                positionDrawable = 1;
             }
 
 
-        } else if (SideD) {
+        } else if (sideD) {
 
-            LastSideW = false;
-            LastSideA = false;
-            LastSideS = false;
-            LastSideD = true;
-            if (x < Gdx.graphics.getWidth()-MyGdxGame.PlayerWith) {
-                x = x + 10;
+            lastSideW = false;
+            lastSideA = false;
+            lastSideS = false;
+            lastSideD = true;
+            if (x < Gdx.graphics.getWidth() - MyGdxGame.playerWith) {
+                x = x + speed;
             } else {
-                Screen.xMir += 10;
+                Screen.xMir += speed;
             }
-            if (Falg == 1) {
+            if (positionDrawable == 1) {
 
                 drawSprite(batch, character, "da");
-                Falg = 2;
-            } else if (Falg == 2) {
+                positionDrawable = 2;
+            } else if (positionDrawable == 2) {
 
                 drawSprite(batch, character, "d");
 
-                Falg = 3;
-            } else if (Falg == 3) {
+                positionDrawable = 3;
+            } else if (positionDrawable == 3) {
 
 
                 drawSprite(batch, character, "dd");
-                Falg = 4;
-            } else if (Falg == 4) {
+                positionDrawable = 4;
+            } else if (positionDrawable == 4) {
 
                 drawSprite(batch, character, "d");
 
-                Falg = 1;
+                positionDrawable = 1;
             }
 
-        } else if (LastSideS) {
+        } else if (lastSideS) {
             drawSprite(batch, character, "s");
-        } else if (LastSideW) {
+        } else if (lastSideW) {
             drawSprite(batch, character, "w");
-        } else if (LastSideA) {
+        } else if (lastSideA) {
             drawSprite(batch, character, "a");
-        } else if (LastSideD) {
+        } else if (lastSideD) {
             drawSprite(batch, character, "d");
         }
 
     }
 
-    private static void drawSprite(Batch batch, TextureAtlas textureAtlas, String name) {
-        Sprite sprite = textureAtlas.createSprite(name);
+    static void drawSprite(Batch batch, TextureAtlas textureAtlas, String name) {
 
-        sprite.setPosition(x - MyGdxGame.PlayerCdvig, y);
-        sprite.setSize(MyGdxGame.PlayerWith, MyGdxGame.Playerheight);
+
+        if (Skins.multiTexture) {
+            sprite = textureAtlas.createSprite(Skins.numberMultiTexture + name);
+        } else {
+            sprite = textureAtlas.createSprite(name);
+        }
+
+        sprite.setPosition(x - MyGdxGame.playerCdvig, y);
+        sprite.setSize(MyGdxGame.playerWith, MyGdxGame.playerHeight);
         sprite.draw(batch);
-        tableName.setPosition((Gdx.graphics.getWidth()/-2)+x- MyGdxGame.PlayerCdvig+80 ,y-Gdx.graphics.getHeight()/2-10);
+        tableName.setPosition(( Gdx.graphics.getWidth() / -2 ) + x - MyGdxGame.playerCdvig + 100, y - Gdx.graphics.getHeight() / 2 - 10);
 
     }
 
 
     static void changeStats(int life) {
-        TuretLimit = Screen.updateMenu.turetLimit;
-        String turetlimText = ( "Turret " + turetColVo + "/" + TuretLimit );
-        turetLImitText.setText(turetlimText);
-
-
-            socerForInt = ( "socer: " + String.valueOf(Screen.score) );
-            socerText.setText(socerForInt);
-            moneyForInt = ( "money: " + String.valueOf(Screen.money) );
-            moneyText.setText(moneyForInt);
+        turretLimit = UpdateMenu.turretLimit;
+        turretLimitTextString = ( "Turret " + turretColVo + "/" + turretLimit );
+        turretLimitText.setText(turretLimitTextString);
+        scoredForInt = ( "socer: " + Screen.score );
+        scoredText.setText(scoredForInt);
+        moneyForInt = ( "money: " + Screen.money );
+        moneyText.setText(moneyForInt);
 
         lifeBar.setValue(life);
     }

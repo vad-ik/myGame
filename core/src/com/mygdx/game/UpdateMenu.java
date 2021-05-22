@@ -6,36 +6,41 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 public class UpdateMenu {
-    int xp;
-    int dmg;
-    int range;
-    float timer;
-    int turetLimit;
+    static int xp;
+    static int dmg;
+    static int range;
+    static float timer;
+    static int turretLimit;
     static Table table = new Table();
     static Skin skin;
-
+    static int updateCost;
+    static TextButton dmgButton;
+    static TextButton turretColVoButton;
+    static TextButton timerButton;
+    static TextButton rangeButton;
+    static TextButton xpButton;
 
     public UpdateMenu() {
         table.clear();
-        table.setPosition(0,0);
+        table.setPosition(0, 0);
         table.setFillParent(true);
         skin = new Skin(Gdx.files.internal("pixthulhu/skin/pixthulhu-ui.json"));
-        this.xp = 10;
-        this.dmg = 1;
-        this.range = 100;
-        this.timer = 50;
-        //this.timer = 1;
-        this.turetLimit = 100;
+        xp = 10;
+        dmg = 1;
+        range = Gdx.graphics.getHeight() / 5;
+        timer = 30;
+        updateCost = 10;
+        turretLimit = 100;
 
 
         table.pad(10).defaults().expandX().space(4);
 
-        final TextButton xpButton = new TextButton("update xp 10 coins. " + this.xp, skin);
+        xpButton = new TextButton("update xp " + updateCost + " coins. " + xp, skin);
 
-        final TextButton dmgButton = new TextButton("update dmg 10 coins. " + this.dmg, skin);
-        final TextButton rangeButton = new TextButton("update range 10 coins. " + this.range, skin);
-        final TextButton timerButton = new TextButton("update reloading 10 coins. " + this.timer, skin);
-        final TextButton turetColVoButton = new TextButton("update turetLimit 10 coins. " + this.turetLimit, skin);
+        dmgButton = new TextButton("update dmg " + updateCost + " coins. " + dmg, skin);
+        rangeButton = new TextButton("update range " + updateCost + " coins. " + range, skin);
+        timerButton = new TextButton("update reloading " + updateCost + " coins. " + timer, skin);
+        turretColVoButton = new TextButton("update turetLimit " + updateCost + " coins. " + turretLimit, skin);
         TextButton Out = new TextButton("out to game", skin);
         int HeightNormal = Gdx.graphics.getHeight() / 7;
         table.add(xpButton).height(HeightNormal);
@@ -47,11 +52,10 @@ public class UpdateMenu {
         table.row().pad(2, 0, 2, 0);
         table.add(timerButton).height(HeightNormal);
         table.row().pad(2, 0, 2, 0);
-        table.add(turetColVoButton).height(HeightNormal);
+        table.add(turretColVoButton).height(HeightNormal);
         table.row().pad(2, 0, 2, 0);
         table.add(Out).height(HeightNormal);
         table.row().pad(2, 0, 2, 0);
-
 
         xpButton.addListener(new ChangeListener() {
             @Override
@@ -59,9 +63,9 @@ public class UpdateMenu {
                 if (Screen.money >= 10) {
                     Screen.money -= 10;
                     xp = xp + 10;
-                    xpButton.setText("update xp 10 coins. " + xp);
-                    for (int i = 0; i < Screen.TuretArray.size(); i++) {
-                        Screen.TuretHP.set(i, Screen.TuretHP.get(i) + 10);
+                    xpButton.setText("update xp " + updateCost + " coins. " + xp);
+                    for (int i = 0; i < Screen.turetArray.size(); i++) {
+                        Screen.turetHP.set(i, Screen.turetHP.get(i) + 10);
                     }
                 }
             }
@@ -73,9 +77,9 @@ public class UpdateMenu {
                 if (Screen.money >= 10) {
                     Screen.money -= 10;
                     dmg = dmg + 1;
-                    dmgButton.setText("update dmg 10 coins. " + dmg);
-                    for (int i = 0; i < Screen.TuretArray.size(); i++) {
-                        Screen.TuretArray.get(i).dmg += 1;
+                    dmgButton.setText("update dmg " + updateCost + " coins. " + dmg);
+                    for (int i = 0; i < Screen.turetArray.size(); i++) {
+                        Turet.dmg += 1;
                     }
                 }
             }
@@ -87,9 +91,9 @@ public class UpdateMenu {
                 if (Screen.money >= 10) {
                     Screen.money -= 10;
                     range = range + 10;
-                    rangeButton.setText("update range 10 coins. " + range);
-                    for (int i = 0; i < Screen.TuretArray.size(); i++) {
-                        Screen.TuretArray.get(i).range += 1;
+                    rangeButton.setText("update range " + updateCost + " coins. " + range);
+                    for (int i = 0; i < Screen.turetArray.size(); i++) {
+                        Turet.range += 1;
                     }
                 }
             }
@@ -101,22 +105,22 @@ public class UpdateMenu {
                 if (Screen.money >= 10) {
                     Screen.money -= 10;
                     timer -= ( timer * 0.05 );
-                    timerButton.setText("update reloading 10 coins. " + timer);
-                    for (int i = 0; i < Screen.TuretArray.size(); i++) {
-                        Screen.TuretArray.get(i).timer = timer;
+                    timerButton.setText("update reloading " + updateCost + " coins. " + timer);
+                    for (int i = 0; i < Screen.turetArray.size(); i++) {
+                        Turet.timer = timer;
                     }
                 }
             }
         });
 
-        turetColVoButton.addListener(new ChangeListener() {
+        turretColVoButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 if (Screen.money >= 10) {
                     Screen.money -= 10;
-                    turetLimit = turetLimit + 1;
-                    turetColVoButton.setText("update turetLimit 10 coins. " + turetLimit);
-                    Screen.player.TuretLimit++;
+                    turretLimit = turretLimit + 1;
+                    turretColVoButton.setText("update turetLimit " + updateCost + " coins. " + turretLimit);
+                    Player.turretLimit++;
                 }
             }
         });
@@ -126,21 +130,27 @@ public class UpdateMenu {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Screen.stage.clear();
-                Screen.UpDateMenFlag = false;
-               Screen.stage.addActor( Screen.player.tableStats);
-                Screen.stage.addActor( Screen.player.tableControl);
+                Screen.updateMenFlag = false;
+                Screen.stage.addActor(Player.tableStats);
+                Screen.stage.addActor(Player.tableControl);
 
-                Screen.stage.addActor( Screen.player.tableName);
+                Screen.stage.addActor(Player.tableName);
             }
         });
 
 
     }
 
+    static void update() {
+        xpButton.setText("update xp " + updateCost + " coins. " + xp);
+        turretColVoButton.setText("update turetLimit " + updateCost + " coins. " + turretLimit);
+        timerButton.setText("update reloading " + updateCost + " coins. " + timer);
+        dmgButton.setText("update dmg " + updateCost + " coins. " + dmg);
+        rangeButton.setText("update range " + updateCost + " coins. " + range);
+
+    }
 
     void render() {
-
-
 
 
         Screen.stage.act();

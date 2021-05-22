@@ -1,0 +1,89 @@
+character3.png
+size: 632, 632
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+s
+  rotate: false
+  xy: 0, 0
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+01
+  rotate: false
+  xy: 158, 0
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+02
+  rotate: false
+  xy: 316, 0
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+03
+  rotate: false
+  xy: 474, 0
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+04
+  rotate: false
+  xy: 0, 158
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+05
+  rotate: false
+  xy: 158, 158
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+06
+  rotate: false
+  xy: 316, 158
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+07
+  rotate: false
+  xy: 474, 158
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+08
+  rotate: false
+  xy: 0, 316
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+09
+  rotate: false
+  xy: 158, 316
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+10
+  rotate: false
+  xy: 316, 316
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1
+11
+  rotate: false
+  xy: 474, 316
+  size: 158, 158
+  orig: 158, 158
+  offset: 0, 0
+  index: -1

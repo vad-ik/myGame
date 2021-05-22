@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="LibGDXSkins">
-    <file url="file://$PROJECT_DIR$/core/assets/pixthulhu/skin/pixthulhu-ui.json" />
-    <file url="file://$PROJECT_DIR$/core/assets/terra-mother/skin/terra-mother-ui.json" />
+    <file url="file://$PROJECT_DIR$/android/assets/pixthulhu/skin/pixthulhu-ui.json" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
